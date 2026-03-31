@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://oyk8o6a5s3rp"]
+
+[ext_resource type="Texture2D" uid="uid://3ffho2k8jbls" path="res://resources/textures/decal_bullethole_1.png" id="1_ja0wo"]
+[ext_resource type="Script" uid="uid://cpgb170eklb2m" path="res://resources/vfx/bullet_decal.gd" id="2_4s81q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4s81q"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="BulletDecal" type="Node3D" unique_id=59439363]
+script = ExtResource("2_4s81q")
+
+[node name="BulletDecal" type="Decal" parent="." unique_id=1578390118]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+layers = 4
+size = Vector3(0.1, 0.5, 0.1)
+texture_albedo = ExtResource("1_ja0wo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BulletDecal" unique_id=704869022]
+visible = false
+mesh = SubResource("BoxMesh_4s81q")

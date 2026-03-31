@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://cyu64gank77ya"]
+
+[ext_resource type="Script" uid="uid://b64oqpqje57ty" path="res://common/hud/hud.gd" id="1_s7dpp"]
+[ext_resource type="Script" uid="uid://du2oqd4e48nc1" path="res://common/hud/damage_display.gd" id="2_hltoy"]
+[ext_resource type="Texture2D" uid="uid://brdafm3313but" path="res://resources/textures/decal_clawmark_1.png" id="2_n8asi"]
+[ext_resource type="Script" uid="uid://1t7aehdi168l" path="res://common/hud/crosshair.gd" id="4_fxrak"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hltoy"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.016551722, 0.016551727, 0.016551709, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxrak"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.26797923, 0.53854537, 0.32480806, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="Control" type="Control" unique_id=581381809]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_s7dpp")
+
+[node name="Damage" type="Control" parent="." unique_id=1883769884]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_hltoy")
+
+[node name="ClawRect" type="TextureRect" parent="Damage" unique_id=651230023]
+modulate = Color(0.75474, 0.31366125, 0.21032587, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -250.0
+offset_right = 120.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.49218285
+mouse_filter = 2
+texture = ExtResource("2_n8asi")
+
+[node name="DamageOverlay" type="ColorRect" parent="Damage" unique_id=2123217210]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.78431374, 0.23529412, 0.21568628, 0.5058824)
+
+[node name="Crosshair" type="Control" parent="." unique_id=1152315892]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_fxrak")
+
+[node name="CrosshairTop" type="ColorRect" parent="Crosshair" unique_id=1011042770]
+layout_mode = 0
+offset_left = 958.0
+offset_top = 515.0
+offset_right = 961.0
+offset_bottom = 525.0
+mouse_filter = 2
+
+[node name="CrosshairBottom" type="ColorRect" parent="Crosshair" unique_id=724889688]
+layout_mode = 0
+offset_left = 958.0
+offset_top = 555.0
+offset_right = 961.0
+offset_bottom = 565.0
+mouse_filter = 2
+
+[node name="CrosshairLeft" type="ColorRect" parent="Crosshair" unique_id=778422227]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 538.0
+offset_right = 945.0
+offset_bottom = 541.0
+mouse_filter = 2
+
+[node name="CrosshairRight" type="ColorRect" parent="Crosshair" unique_id=1626568668]
+layout_mode = 0
+offset_left = 975.0
+offset_top = 538.0
+offset_right = 985.0
+offset_bottom = 541.0
+mouse_filter = 2
+
+[node name="CrosshairCenter" type="ColorRect" parent="Crosshair" unique_id=168755694]
+layout_mode = 0
+offset_left = 959.0
+offset_top = 539.0
+offset_right = 961.0
+offset_bottom = 541.0
+mouse_filter = 2
+
+[node name="BulletsLabel" type="Label" parent="." unique_id=412994849]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -204.0
+offset_top = -113.0
+offset_right = -72.0
+offset_bottom = -58.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Bullets"
+horizontal_alignment = 2
+
+[node name="EnemiesLabel" type="Label" parent="." unique_id=875787018]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -223.0
+offset_top = 54.0
+offset_right = -60.0
+offset_bottom = 109.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "Enemies"
+horizontal_alignment = 2
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1163081990]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+offset_left = 71.0
+offset_top = 61.0
+offset_right = 471.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxFlat_hltoy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fxrak")
+value = 100.0
+rounded = true

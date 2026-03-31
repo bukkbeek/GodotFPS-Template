@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://toourw480edt"]
+
+[ext_resource type="Script" uid="uid://b8chd2ar1cvy3" path="res://common/spawner/spawner.gd" id="1_sss8v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngddn"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.1234731, 0.123473026, 0.12347304, 1)
+metallic_specular = 0.0
+billboard_keep_scale = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_w3xj7"]
+material = SubResource("StandardMaterial3D_ngddn")
+size = Vector3(1, 0.4, 1)
+
+[node name="Spawner" type="Node3D" unique_id=1991087990]
+script = ExtResource("1_sss8v")
+
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=2010155607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3246959, 0)
+
+[node name="spawner_mesh" type="MeshInstance3D" parent="." unique_id=940047322]
+mesh = SubResource("BoxMesh_w3xj7")
+skeleton = NodePath("")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=968779795]

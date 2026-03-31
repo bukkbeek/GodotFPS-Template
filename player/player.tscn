@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cdbipjyx57al2"]
+
+[ext_resource type="Script" uid="uid://dau5ewl1inltl" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://85o1fose5ay1" path="res://common/utils/active_camera.gd" id="2_boad6"]
+[ext_resource type="Script" uid="uid://crk1vovs3vyif" path="res://common/managers/weapons_manager.gd" id="3_rgyib"]
+[ext_resource type="PackedScene" uid="uid://dw2hcpsqkygc2" path="res://weapons/pistol.tscn" id="4_hg6s5"]
+[ext_resource type="PackedScene" uid="uid://5r64a43lxupx" path="res://weapons/assualt_rifle.tscn" id="5_8t03j"]
+[ext_resource type="PackedScene" uid="uid://cwnp28v78he3g" path="res://weapons/assualt_burst.tscn" id="6_2ieo8"]
+[ext_resource type="PackedScene" uid="uid://54mnvp5mwdb2" path="res://weapons/lmg.tscn" id="7_ebec5"]
+[ext_resource type="PackedScene" uid="uid://c5cmenins5u2w" path="res://weapons/knife.tscn" id="8_yllr7"]
+[ext_resource type="Script" uid="uid://gku3bplish0s" path="res://common/utils/weapon_sub_viewport.gd" id="17_tqiix"]
+[ext_resource type="Script" uid="uid://ceq0fc565dbaa" path="res://common/managers/audio_manager.gd" id="18_x7c3f"]
+[ext_resource type="AudioStream" uid="uid://tohbwu7jgoab" path="res://player/sfx/footstep_ground.ogg" id="19_bjvpn"]
+[ext_resource type="AudioStream" uid="uid://drpdbxpt2fu6u" path="res://player/sfx/footstep_jump.wav" id="20_s7qer"]
+[ext_resource type="AudioStream" uid="uid://ol7ybyeu817g" path="res://player/sfx/footstep_metal.ogg" id="21_g4c7l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
+radius = 0.2
+height = 1.85
+
+[node name="Player" type="CharacterBody3D" unique_id=1157596601 groups=["door_access", "player"]]
+script = ExtResource("1_oul6g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=403717584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0)
+shape = SubResource("CapsuleShape3D_rkbax")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=2123931172]
+transform = Transform3D(0.9999999, 0, -1.4210853e-14, 0, 1, 0, 1.4210854e-14, 0, 0.99999994, 0, 1.7, 0)
+script = ExtResource("2_boad6")
+
+[node name="CameraHolder" type="Node3D" parent="CameraPivot" unique_id=1406019789]
+
+[node name="MainCamera" type="Camera3D" parent="CameraPivot/CameraHolder" unique_id=2031709982]
+unique_name_in_owner = true
+cull_mask = 1048573
+
+[node name="WeaponsManager" type="Node3D" parent="." unique_id=1444023138 node_paths=PackedStringArray("weapons_array")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+script = ExtResource("3_rgyib")
+follow_speed = 50.0
+weapons_array = [NodePath("Knife"), NodePath("Pistol"), NodePath("AssualtRifle"), NodePath("AssualtBurstRifle"), NodePath("LMG")]
+
+[node name="RayCastOrigin" type="Node3D" parent="WeaponsManager" unique_id=964028775]
+
+[node name="WeaponRayCast" type="RayCast3D" parent="WeaponsManager/RayCastOrigin" unique_id=1650999367]
+target_position = Vector3(0, 0, -10)
+collision_mask = 6
+
+[node name="Knife" parent="WeaponsManager" unique_id=171239475 instance=ExtResource("8_yllr7")]
+
+[node name="Pistol" parent="WeaponsManager" unique_id=1058031305 instance=ExtResource("4_hg6s5")]
+
+[node name="AssualtRifle" parent="WeaponsManager" unique_id=240215704 instance=ExtResource("5_8t03j")]
+
+[node name="AssualtBurstRifle" parent="WeaponsManager" unique_id=13097583 instance=ExtResource("6_2ieo8")]
+
+[node name="LMG" parent="WeaponsManager" unique_id=635718025 instance=ExtResource("7_ebec5")]
+
+[node name="WeaponSubViewport" type="SubViewportContainer" parent="." unique_id=884807026]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="WeaponSubViewport" unique_id=870436344]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+script = ExtResource("17_tqiix")
+
+[node name="Camera3D" type="Camera3D" parent="WeaponSubViewport/SubViewport" unique_id=63892889]
+transform = Transform3D(1, 0, -1.4210856e-14, 0, 1, 0, 1.4210856e-14, 0, 1, 0, 1.7, 0)
+cull_mask = 2
+
+[node name="AudioManager" type="Node3D" parent="." unique_id=654099561 node_paths=PackedStringArray("player")]
+script = ExtResource("18_x7c3f")
+player = NodePath("..")
+
+[node name="GroundDetectRayCast" type="RayCast3D" parent="AudioManager" unique_id=1429008395]
+target_position = Vector3(0, -0.1, 0)
+
+[node name="FootstepGround" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=1316048318]
+stream = ExtResource("19_bjvpn")
+volume_db = -25.0
+
+[node name="FootstepJump" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=1896957306]
+stream = ExtResource("20_s7qer")
+volume_db = -25.0
+
+[node name="FootstepMetal" type="AudioStreamPlayer3D" parent="AudioManager" unique_id=1362647579]
+stream = ExtResource("21_g4c7l")
+volume_db = -25.0

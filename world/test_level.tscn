@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://i3v82muv47ra"]
+
+[ext_resource type="PackedScene" uid="uid://cgoygf7qkqsrx" path="res://common/utils/ammo_refil.tscn" id="1_434qw"]
+[ext_resource type="PackedScene" uid="uid://bjg7xseiiam4u" path="res://world/static/cargo.tscn" id="2_kfa7i"]
+[ext_resource type="PackedScene" uid="uid://cnijacbx27yf1" path="res://world/static/block.tscn" id="3_x27he"]
+[ext_resource type="PackedScene" uid="uid://d4chreocdbarb" path="res://world/static/wreck.tscn" id="4_mmx4b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ku4rg"]
+albedo_color = Color(0.14446819, 0.1968559, 0.24842113, 1)
+
+[node name="test_level" type="Node3D" unique_id=2042929182]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=198086441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -40)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(64, 1, 100)
+material = SubResource("StandardMaterial3D_ku4rg")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1385479137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2.5, -21)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(5, 5, 5)
+material = SubResource("StandardMaterial3D_ku4rg")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=493882207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 2.5, -28.5)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(2, 5, 2)
+material = SubResource("StandardMaterial3D_ku4rg")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=1371371648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 2.5, -38.5)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(2, 5, 2)
+material = SubResource("StandardMaterial3D_ku4rg")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1700001065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 5.5, -32.5)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(5, 1, 14)
+material = SubResource("StandardMaterial3D_ku4rg")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1323155228]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 15.941378, 0.04128337, -21)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(11.12, 5.025, 4.8)
+material = SubResource("StandardMaterial3D_ku4rg")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=516424974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2.5, -24)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(5, 5, 5)
+material = SubResource("StandardMaterial3D_ku4rg")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=693393882]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -9, 2.5, -34)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(5, 5, 5)
+material = SubResource("StandardMaterial3D_ku4rg")
+
+[node name="fps_demo_props" type="Node3D" parent="." unique_id=735944165]
+
+[node name="AmmoRefil" parent="fps_demo_props" unique_id=1503917819 instance=ExtResource("1_434qw")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 13, 0, -1)
+
+[node name="cargo" parent="fps_demo_props" unique_id=1074046123 instance=ExtResource("2_kfa7i")]
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, -17, 0, -11)
+surface_material_override/0 = null
+
+[node name="cargo2" parent="fps_demo_props" unique_id=915658116 instance=ExtResource("2_kfa7i")]
+transform = Transform3D(0.9659257, 0, -0.25881907, 0, 1, 0, 0.25881907, 0, 0.9659257, 24, 0, -58)
+surface_material_override/0 = null
+
+[node name="block" parent="fps_demo_props" unique_id=1844565960 instance=ExtResource("3_x27he")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0)
+surface_material_override/0 = null
+
+[node name="wreck" parent="fps_demo_props" unique_id=91317205 instance=ExtResource("4_mmx4b")]
+transform = Transform3D(1.0392305, 0, -0.5999999, 0, 1.1999999, 0, 0.5999999, 0, 1.0392305, -11, 0, -10)

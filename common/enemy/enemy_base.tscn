@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dkqh6ceh3t7ko"]
+
+[ext_resource type="Script" uid="uid://bm1v5w71xycgs" path="res://common/enemy/enemy.gd" id="1_iblf3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7w6bu"]
+radius = 0.3
+height = 1.6
+
+[sub_resource type="Gradient" id="Gradient_m2yhh"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ghbyu"]
+gradient = SubResource("Gradient_m2yhh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2yhh"]
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture1D_ghbyu")
+uv1_scale = Vector3(0.5, 1, 1)
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ghbyu"]
+material = SubResource("StandardMaterial3D_m2yhh")
+size = Vector2(0.6, 0.05)
+orientation = 2
+
+[node name="Enemy" type="CharacterBody3D" unique_id=2101626561 node_paths=PackedStringArray("collision_shape") groups=["character"]]
+script = ExtResource("1_iblf3")
+collision_shape = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=36399881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_7w6bu")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=665212628]
+
+[node name="SFX" type="Node3D" parent="." unique_id=1972350681]
+
+[node name="VFX" type="Node3D" parent="." unique_id=928045482]
+
+[node name="DebugLabel" type="Label3D" parent="." unique_id=538457141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2915716, 0)
+billboard = 1
+text = "debug"
+uppercase = true
+
+[node name="ChaseTimer" type="Timer" parent="." unique_id=1201620795]
+
+[node name="HealthBar" type="MeshInstance3D" parent="." unique_id=1296051537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1081502, 0)
+mesh = SubResource("PlaneMesh_ghbyu")

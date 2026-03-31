@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://54mnvp5mwdb2"]
+
+[ext_resource type="PackedScene" uid="uid://dtkna74y7fni" path="res://common/weapon/weapon_base.tscn" id="1_76etk"]
+
+[node name="LMG" unique_id=1058031305 instance=ExtResource("1_76etk")]
+firing_distance = 100.0
+animation_fire = "lmg_fire"
+animation_reload = "lmg_reload"
+bullet_type = 5
+damage = 60.0
+cooldown = 0.1
+burst_mode = true
+mag_capacity = 250
+reload_time = 4.0
+focused_aim_angle = 1.5
+standard_aim_angle = 4.0
+
+[node name="StandardAimPosition" parent="." index="0" unique_id=643753700]
+transform = Transform3D(0.99619466, 0.0075961226, 0.086824074, 0, 0.9961947, -0.08715573, -0.08715573, 0.08682408, 0.99240386, 0.4, -0.05, 0.2)
+
+[node name="FocusedAimPosition" parent="." index="1" unique_id=1608304768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+
+[node name="fps_demo_arms" parent="." index="6" unique_id=1804116874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.05, 0.2)
+
+[node name="Skeleton3D" parent="fps_demo_arms/Armature" parent_id_path=PackedInt32Array(1804116874, 66851996) index="0" unique_id=1936994467]
+bones/0/position = Vector3(0, 0, -0.2)
+bones/1/position = Vector3(-0.032954693, -0.19831884, -0.12969159)
+bones/1/rotation = Quaternion(-0.0051522516, 0.6761193, 0.73675287, 0.0056144595)
+bones/2/position = Vector3(0.10031289, -0.1625016, 0.33931935)
+bones/2/rotation = Quaternion(0.032647662, -0.35219568, -0.620423, -0.69997686)
+bones/3/position = Vector3(-0.32294092, -0.12173046, -0.57225883)
+bones/4/rotation = Quaternion(-0.16610502, -0.049222827, 0.7525919, 0.6352887)
+bones/5/rotation = Quaternion(0.048751317, -0.018474989, 0.45543018, 0.8887437)
+bones/6/rotation = Quaternion(0.012908702, -0.10622432, -0.5309125, 0.8406436)
+bones/7/position = Vector3(-0.0049524866, 0.14932774, 0.0072449395)
+bones/7/rotation = Quaternion(0.5406231, -0.44902936, 0.543486, 0.45904487)
+bones/8/rotation = Quaternion(0.58973587, -0.00089109666, -0.010636627, 0.8075257)
+bones/9/position = Vector3(-0.005041547, 0.14700107, -0.028757796)
+bones/9/rotation = Quaternion(0.51445967, -0.41701794, 0.56663615, 0.49025577)
+bones/10/rotation = Quaternion(0.6310488, 0.03601601, 0.059823073, 0.772594)
+bones/11/position = Vector3(-0.016787108, 0.123262964, -0.054988522)
+bones/11/rotation = Quaternion(0.47302365, -0.5156928, 0.46531072, 0.5420292)
+bones/12/rotation = Quaternion(0.76756555, 0.051330764, -0.015911736, 0.6387138)
+bones/13/position = Vector3(-0.0014610151, 0.14136288, 0.040660594)
+bones/13/rotation = Quaternion(0.18226297, -0.6917242, -0.101971865, 0.69130284)
+bones/14/rotation = Quaternion(0.7193915, 0.028842093, -0.0068290145, 0.69397223)
+bones/15/position = Vector3(-0.05679829, 0.044597704, 0.03995519)
+bones/15/rotation = Quaternion(0.17103477, -0.63315594, 0.09100769, 0.74938536)
+bones/16/rotation = Quaternion(-0.3045925, -0.05045558, 0.029515147, 0.9506874)
+bones/17/position = Vector3(-0.000120482735, 0.08684498, 1.6066532e-06)
+bones/17/rotation = Quaternion(-2.804631e-09, -1.2023749e-08, 0.7071068, 0.7071068)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/position = Vector3(0.32028934, -0.4460239, -0.14859049)
+bones/19/rotation = Quaternion(0.4035583, 0.014910607, -0.69829535, 0.5910178)
+bones/20/rotation = Quaternion(0.09016423, 0.0005167248, -0.09747702, 0.99114496)
+bones/21/rotation = Quaternion(-0.13685933, -0.83179796, -0.22605854, 0.48813853)
+bones/22/position = Vector3(-0.025002424, 0.12888941, -0.021612726)
+bones/22/rotation = Quaternion(0.195297, 0.6414311, -0.16201265, 0.7240008)
+bones/23/rotation = Quaternion(0.5741797, -0.1672601, -0.029768644, 0.8009093)
+bones/24/position = Vector3(-0.024957834, 0.12135503, -0.04447087)
+bones/24/rotation = Quaternion(0.25156987, 0.5961667, -0.2665325, 0.71432376)
+bones/25/rotation = Quaternion(0.48480475, -0.08172654, -0.011129445, 0.8707246)
+bones/26/position = Vector3(-0.017651474, 0.11111832, -0.06494658)
+bones/26/rotation = Quaternion(0.3055577, 0.6149513, -0.25198567, 0.6818891)
+bones/27/rotation = Quaternion(0.38818946, -0.13337031, -0.04249535, 0.91088724)
+bones/28/position = Vector3(-0.025657305, 0.12324755, 0.005308425)
+bones/28/rotation = Quaternion(0.20873393, 0.6346767, -0.10254352, 0.7369535)
+bones/29/rotation = Quaternion(0.5517925, -0.24240051, -0.048213955, 0.79651904)
+bones/30/position = Vector3(0.0045043114, 0.056675944, 0.03962656)
+bones/30/rotation = Quaternion(0.46968603, 0.4977992, -0.14786386, 0.71395195)
+bones/31/rotation = Quaternion(-0.026139356, 0.029967034, -0.18505952, 0.98192245)
+bones/32/position = Vector3(0.000120500576, 0.08684495, 1.5982296e-06)
+bones/32/scale = Vector3(0, 0, 0)
+
+[node name="Holder_R" parent="fps_demo_arms/Armature/Skeleton3D" index="0" unique_id=796952825]
+transform = Transform3D(0.015240125, -0.9998839, -1.9998069e-07, -0.085662216, -0.0013057649, 0.9963234, -0.9962078, -0.015184255, -0.08567216, 0.03417477, -0.20575416, -0.15680978)
+
+[node name="lmg_ammo" parent="fps_demo_arms/Armature/Skeleton3D/Holder_R" index="5" unique_id=66814204]
+visible = true
+
+[node name="hand_R" parent="fps_demo_arms/Armature/Skeleton3D" index="1" unique_id=74823416]
+transform = Transform3D(0.9998839, 0.015240125, -1.7881393e-07, 0.001305744, -0.08566223, 0.9963234, 0.015184257, -0.9962078, -0.08567218, 0.03297171, -0.19831628, -0.07029216)
+
+[node name="lmg" parent="fps_demo_arms/Armature/Skeleton3D/hand_R" index="4" unique_id=1418122087]
+visible = true
+
+[node name="Holder_L" parent="fps_demo_arms/Armature/Skeleton3D" index="2" unique_id=1430940380]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.02288796, -0.14260101, -0.57323265)
+
+[node name="hand_L" parent="fps_demo_arms/Armature/Skeleton3D" index="3" unique_id=1868422015]
+transform = Transform3D(0.01793304, 0.8915605, -0.45254636, 0.84556663, 0.22801858, 0.4827259, 0.53356826, -0.39131498, -0.7497848, -0.10031693, -0.16250594, -0.539312)
+
+[node name="MuzzleFlashPosition" parent="fps_demo_arms" index="2" unique_id=219008948]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, -0.07277817, -1.2106574)
+
+[editable path="fps_demo_arms"]

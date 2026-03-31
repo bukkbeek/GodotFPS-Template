@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dv8oe7udophqu"]
+
+[ext_resource type="Script" uid="uid://dxn5jyey2in7o" path="res://common/projectile/projectile.gd" id="1_emq45"]
+[ext_resource type="Texture2D" uid="uid://3ffho2k8jbls" path="res://resources/textures/decal_bullethole_1.png" id="2_u0u2o"]
+[ext_resource type="ArrayMesh" uid="uid://rumxv4mhvxuk" path="res://resources/vfx/standard_particle_spike.mesh" id="3_s4dkt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4dkt"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s4dkt"]
+material = SubResource("StandardMaterial3D_s4dkt")
+radius = 0.05
+height = 0.3
+
+[sub_resource type="Curve" id="Curve_7227o"]
+_data = [Vector2(0.102612, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_48gr2"]
+curve = SubResource("Curve_7227o")
+
+[sub_resource type="Curve" id="Curve_cbibj"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0.164179, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cdlk0"]
+curve = SubResource("Curve_cbibj")
+
+[sub_resource type="Curve" id="Curve_6h23u"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.141791, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ada02"]
+curve = SubResource("Curve_6h23u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cnl5b"]
+lifetime_randomness = 0.4
+particle_flag_align_y = true
+angle_max = 180.0
+velocity_pivot = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_ada02")
+alpha_curve = SubResource("CurveTexture_48gr2")
+emission_curve = SubResource("CurveTexture_cdlk0")
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_emq45")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -0.5)
+collision_mask = 3
+
+[node name="mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_s4dkt")
+skeleton = NodePath("../..")
+
+[node name="decal" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.357515)
+
+[node name="Decal_BulletHole_1" type="Decal" parent="decal"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+size = Vector3(0.05, 1, 0.05)
+texture_albedo = ExtResource("2_u0u2o")
+texture_emission = ExtResource("2_u0u2o")
+
+[node name="ElectricSparks_1" type="GPUParticles3D" parent="."]
+sorting_offset = -1.0
+emitting = false
+amount = 16
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.57
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_cnl5b")
+draw_pass_1 = ExtResource("3_s4dkt")
