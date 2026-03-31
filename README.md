@@ -198,7 +198,8 @@ Health is defined in script (`MAX_HEALTH`, `current_health`); adjust there for d
 
 ## License
 
-MIT
+This project is under MIT license. You can fork, edit, use the repo as you want.
+But you are prohibited to resell any asset originating from this project including 3D assets, VFX, SFX (credits: [Pixabay](https://pixabay.com/)) and animations (Credits: [Mesh2Motion](https://mesh2motion.org/))
 
 ---
 
